@@ -1,0 +1,103 @@
+﻿@model IEnumerable<RepairService.Models.Problem>
+@{
+    ViewBag.Title = "DashBoard";
+    Layout = "~/Views/Shared/Index.cshtml";
+}
+
+@Html.Raw(TempData["SuccessMsg"])
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<!-- start Nav -->
+<div id="app" class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand text-weight-bold" href="#"><span style="color: #2ECC71">Repair</span>Service</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarNavDropdown" class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    @Html.ActionLink("Home", "DashBoard", "Admin", new { @class = "nav-link lead" })
+
+                    @*<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>*@
+                </li>
+                <!--<li class="nav-item">
+                    @Html.ActionLink("Problems", "#", "#", new { @class = "nav-link lead" })-->
+
+                    @*<a class="nav-link" href="#">Features</a>*@
+                <!--</li>-->
+                <li class="nav-item">
+                    @Html.ActionLink("Add New Technician", "AddNewTech", "Admin", new { @class = "nav-link lead" })
+                </li>
+
+                <li class="nav-item">
+                    @Html.ActionLink("Add New Admin", "AdminSignUp", "Admin", new { @class = "nav-link lead" })
+                </li>
+
+                <li class="nav-item">
+                    @Html.ActionLink("Delivered Problems", "#", "#", new { @class = "nav-link lead" })
+
+                    @*<a class="nav-link" href="#">Pricing</a>*@
+                </li>
+
+            </ul>
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    @Html.ActionLink("Logout", "LogOut", "Admin", null, new { @class = "btn btn-success btn-lg" })
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<!-- end Nav -->
+
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+<div class="container" style="padding-top:20px;">
+    <h3 class="text-center text-info">All Problem List</h3>
+    <hr />
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Problem_type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrandName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProblemDescription)
+            </th>
+            <th> Actions</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Problem_type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Device)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BrandName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProblemDescription)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.Pid }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Pid })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+    <p>@Session["aid"]</p>
+    <h2>DashBoard</h2>
+

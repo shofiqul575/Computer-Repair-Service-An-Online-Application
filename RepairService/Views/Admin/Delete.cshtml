@@ -1,0 +1,56 @@
+﻿@model RepairService.Models.Problem
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Index.cshtml";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+
+<div class="container">
+    <h3 class="text-danger">Are you sure you want to delete this Problem?</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Problem_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Problem_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Device)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Device)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrandName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProblemDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProblemDescription)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-outline-danger" /> |
+            @Html.ActionLink("Back to List", "DashBoard")
+        </div>
+    }
+</div>

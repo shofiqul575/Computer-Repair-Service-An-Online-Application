@@ -1,0 +1,55 @@
+﻿@model RepairService.Models.Problem
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Index.cshtml";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+
+<div class="container">
+    <h4 class="text-info">Problem Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Problem_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Problem_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Device)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Device)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrandName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProblemDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProblemDescription)
+        </dd>
+    </dl>
+    @Html.ActionLink("Assign Technician", "TechList", "Admin", new { @class = "btn btn-outline-warning btn-lg" })
+    <hr />
+    <p>
+        @Html.ActionLink("Back to List", "DashBoard")
+    </p>
+    <h3>@Session["pid"]</h3>
+</div>
+
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>

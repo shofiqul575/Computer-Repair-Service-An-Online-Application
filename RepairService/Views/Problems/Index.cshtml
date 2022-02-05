@@ -1,0 +1,97 @@
+﻿@model IEnumerable<RepairService.Models.Problem>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Index.cshtml";
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<!-- start Nav -->
+<div id="app" class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand text-weight-bold" href="#"><span style="color: #2ECC71">Repair</span>Service</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarNavDropdown" class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    @Html.ActionLink("Home", "Index", "User", new { @class = "nav-link lead" })
+
+                    @*<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>*@
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Problems", "Create", "User", new { id = Session["uid"] }, new { @class = "nav-link lead" })
+
+                    @*<a class="nav-link" href="#">Features</a>*@
+                </li>
+
+            </ul>
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    @Html.ActionLink("Logout", "LogOut", "User", new { @class = "btn btn-success" })
+                    @*<button class="btn btn-outline-success btn-lg" type="button" onclick="location.href = '@Url.Action("Index","Home")'">Logout</button>*@
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<!-- end Nav -->
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<h2>User Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Problem_type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Device)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProblemDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.userid)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Problem_type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Device)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrandName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProblemDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userid)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Pid }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Pid }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Pid })
+            </td>
+        </tr>
+    }
+
+</table>

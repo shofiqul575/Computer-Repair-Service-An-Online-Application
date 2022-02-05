@@ -1,0 +1,72 @@
+﻿@model IEnumerable<RepairService.Models.Technician>
+
+@{
+    ViewBag.Title = "TechList";
+    Layout = "~/Views/Shared/Index.cshtml";
+}
+
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<div class="container">
+    <h2 class="text-center text-primary">AVailable Technician List</h2>
+
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TechnicianName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShopName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShopAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expertise)
+            </th>
+            <th>
+                Action
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TechnicianName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShopName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShopAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Expertise)
+                </td>
+                <td>
+                    @* <input type="submit" value="Assign" class="btn btn-outline-info btn-lg" />*@
+
+                    @Html.ActionLink("Assign", "Assign", new { id = item.Tid }, new { @class = "btn btn-outline-info btn-lg" })
+
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Tid }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Tid }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Tid })*@
+                </td>
+            </tr>
+        }
+        @Html.ActionLink("Dashboard", "DashBoard", "Admin", new { @class = "nav-link lead" })
+    </table>
+    
+
+    <h3>
+        @Session["pid"]
+    </h3>
+</div>
